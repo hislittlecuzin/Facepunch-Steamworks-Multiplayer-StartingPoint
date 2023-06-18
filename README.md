@@ -53,6 +53,7 @@ You can do byte arrays but that sounded hard... so I didn't do them.
 you have to malloc then point... this is very "C" level code so if you don't understand it, just like take this method and figure out wtf you can do IG....
 I've been drunk for like 3 days so I'm not going to be too useful in editing stuff nicely. 
 
+```cs
 //ClientToServerControllerInput is an enum (byte)
 //ClientToServerControllerInputPacket is a struct... guess the types, cuz they're byte, byte, float, bool in that order as you can see by the psuedo constructor. 
 void MessageServerControllerInput(ClientToServerControllerInput input, bool pressed) {
@@ -78,6 +79,6 @@ void MessageServerControllerInput(ClientToServerControllerInput input, bool pres
         Marshal.FreeHGlobal(ptrData);
     }
 //end of code block
-
+```
 
 If you appreciate me or love me or something , plz giv money... am poor. idk how you would but ig I have a game on steam that's meh called Holy Journey of Salvation. And a youtube channel so if I release other games without dying, you can maybe buy one of those. 
