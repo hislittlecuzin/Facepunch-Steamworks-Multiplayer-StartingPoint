@@ -49,6 +49,35 @@ And then make different packets. Then you perhaps won't have memory leaks 'n stu
 All packets HAVE to be structures... as far as I can tell. 
 You can do byte arrays but that sounded hard... so I didn't do them. 
 
+# If you have inconsistent data transmissions/etc
+you have to malloc then point... this is very "C" level code so if you don't understand it, just like take this method and figure out wtf you can do IG....
+I've been drunk for like 3 days so I'm not going to be too useful in editing stuff nicely. 
+
+//ClientToServerControllerInput is an enum (byte)
+//ClientToServerControllerInputPacket is a struct... guess the types, cuz they're byte, byte, float, bool in that order as you can see by the psuedo constructor. 
+void MessageServerControllerInput(ClientToServerControllerInput input, bool pressed) {
+        ClientToServerControllerInputPacket clientToServerControllerInputPacket = new ClientToServerControllerInputPacket();
+        
+        clientToServerControllerInputPacket.packet = PacketType.ClientToServerControllerInput;
+        clientToServerControllerInputPacket.input = input;
+        clientToServerControllerInputPacket.pointInTime = 0.0f;
+        clientToServerControllerInputPacket.pressed = pressed;
+
+//Malloc
+        IntPtr ptrData = Marshal.AllocHGlobal(Marshal.SizeOf(clientToServerControllerInputPacket));
+//Point to datum
+        Marshal.StructureToPtr(clientToServerControllerInputPacket, ptrData, false);//
+
+        int sizeOfMessage = Marshal.SizeOf<ClientToServerControllerInputPacket>(clientToServerControllerInputPacket);
+        NetworkManager.instance.currentConnectionToServer.MessageServerData(ptrData, sizeOfMessage);
+        //Marshal.write
+
+        ClientToServerControllerInputPacket clientToServerControllerInputPacket1 = (ClientToServerControllerInputPacket)Marshal.PtrToStructure(ptrData, typeof(ClientToServerControllerInputPacket));
+        GD.Print("Testing SendingDatum Packet not networked: Pressed?: " + clientToServerControllerInputPacket1.pressed + " Button: " + clientToServerControllerInputPacket1.input.ToString() + " Packet: " + clientToServerControllerInputPacket1.packet.ToString());
+        GD.Print("Real Data: Pressed?: " + clientToServerControllerInputPacket.pressed + " Button: " + clientToServerControllerInputPacket.input.ToString() + " Packet: " + clientToServerControllerInputPacket.packet.ToString());
+        Marshal.FreeHGlobal(ptrData);
+    }
+//end of code block
 
 
 If you appreciate me or love me or something , plz giv money... am poor. idk how you would but ig I have a game on steam that's meh called Holy Journey of Salvation. And a youtube channel so if I release other games without dying, you can maybe buy one of those. 
