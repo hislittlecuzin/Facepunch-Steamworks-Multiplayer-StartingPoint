@@ -55,7 +55,7 @@ I've been drunk for like 3 days so I'm not going to be too useful in editing stu
 
 ```cs
 //ClientToServerControllerInput is an enum (byte)
-//ClientToServerControllerInputPacket is a struct... guess the types, cuz they're byte, byte, float, bool in that order as you can see by the psuedo constructor. 
+//ClientToServerControllerInputPacket is a struct... guess the types, cuz they're enum(byte), enum(byte), float, bool in that order as you can see by the psuedo constructor. 
 void MessageServerControllerInput(ClientToServerControllerInput input, bool pressed) {
         ClientToServerControllerInputPacket clientToServerControllerInputPacket = new ClientToServerControllerInputPacket();
         
