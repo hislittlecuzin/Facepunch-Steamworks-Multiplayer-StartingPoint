@@ -33,7 +33,7 @@ Have... Fun?
 
 
 
-#more infos
+# more infos
 Godot's gameobject hierarchy is a linked list or something so when I do like "add node" or something, that's how ya spawn shizz.
 Also The NetworkManager.cs is loaded in the autoload cuz that's how Godot does singletons. 
 In godot... go to the top left where "file, edit" etc would be dropdowns and:
