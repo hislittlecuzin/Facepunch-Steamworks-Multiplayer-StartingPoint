@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://h0c7eshwpk8o"]
+
+[node name="LobbyPlayerInsert" type="Label"]
+text = "INVALID NAME"
