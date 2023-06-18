@@ -92,7 +92,7 @@ public partial class NetworkManager : Node
         //NetworkedMultiplayerENet.New();
         try
         {
-            Steamworks.SteamClient.Init(2478900, true); //2478900
+            Steamworks.SteamClient.Init(480, true); // this is my game's code... does it matter I leaked it? 2478900
             GD.Print(SteamClient.Name);
         }
         catch (Exception e)
