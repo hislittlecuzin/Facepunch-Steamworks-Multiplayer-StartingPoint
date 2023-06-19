@@ -76,6 +76,7 @@ void MessageServerControllerInput(ClientToServerControllerInput input, bool pres
         ClientToServerControllerInputPacket clientToServerControllerInputPacket1 = (ClientToServerControllerInputPacket)Marshal.PtrToStructure(ptrData, typeof(ClientToServerControllerInputPacket));
         GD.Print("Testing SendingDatum Packet not networked: Pressed?: " + clientToServerControllerInputPacket1.pressed + " Button: " + clientToServerControllerInputPacket1.input.ToString() + " Packet: " + clientToServerControllerInputPacket1.packet.ToString());
         GD.Print("Real Data: Pressed?: " + clientToServerControllerInputPacket.pressed + " Button: " + clientToServerControllerInputPacket.input.ToString() + " Packet: " + clientToServerControllerInputPacket.packet.ToString());
+        //idk if you have to free it but I'm not going to delete this line of code now that it's here...
         Marshal.FreeHGlobal(ptrData);
     }
 //end of code block
