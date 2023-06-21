@@ -82,4 +82,10 @@ void MessageServerControllerInput(ClientToServerControllerInput input, bool pres
 //end of code block
 ```
 
+#example/rentalsgame
+This folder has some more shizz I was working on for like fps. 
+
+You can use that texture IG.... It's a picture of my desk with water damage or sumn. 
+If you don;t use my drunk boiler plate code there, you can just delete that folda. 
+
 If you appreciate me or love me or something , plz giv money... am poor. idk how you would but ig I have a game on steam that's meh called Holy Journey of Salvation. And a youtube channel so if I release other games without dying, you can maybe buy one of those. 
