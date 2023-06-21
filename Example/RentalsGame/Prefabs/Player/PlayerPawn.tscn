@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnn1yxjgyurfx"]
+
+[ext_resource type="Script" path="res://Prefabs/Player/PlayerPawn.cs" id="1_k20wi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gc3um"]
+
+[node name="PlayerPawn" type="CharacterBody3D"]
+script = ExtResource("1_k20wi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_gc3um")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
