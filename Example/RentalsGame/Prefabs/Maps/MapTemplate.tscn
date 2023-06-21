@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqfdxnjrtvulv"]
+
+[ext_resource type="Script" path="res://Scripts/PawnSpawnPointManager.cs" id="1_twoic"]
+[ext_resource type="Texture2D" uid="uid://c48rn4egjlll0" path="res://Prototyping/Half Shadow Desk Top.jpg" id="2_kwvng"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hvxd"]
+albedo_texture = ExtResource("2_kwvng")
+
+[node name="MapTemplate" type="Node3D"]
+script = ExtResource("1_twoic")
+redSpawnPaths = [NodePath("Red Spawn/RedSpawn0"), NodePath("Red Spawn/RedSpawn1"), NodePath("Red Spawn/RedSpawn2"), NodePath("Red Spawn/RedSpawn3"), NodePath("Red Spawn/RedSpawn4")]
+blueSpawnPaths = [NodePath("Blue Spawn/BlueSpawn0"), NodePath("Blue Spawn/BlueSpawn1"), NodePath("Blue Spawn/BlueSpawn2"), NodePath("Blue Spawn/BlueSpawn3"), NodePath("Blue Spawn/BlueSpawn4")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_2hvxd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.932823, 1.57578)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.82467)
+
+[node name="Red Spawn" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03021, -24.4375)
+
+[node name="RedSpawn0" type="Node3D" parent="Red Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.52586)
+
+[node name="RedSpawn1" type="Node3D" parent="Red Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.950386, 0, 1.52586)
+
+[node name="RedSpawn2" type="Node3D" parent="Red Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23939, 0, 1.52586)
+
+[node name="RedSpawn3" type="Node3D" parent="Red Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25399, 0, 0.0197697)
+
+[node name="RedSpawn4" type="Node3D" parent="Red Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40817, 0, 0.0800877)
+
+[node name="Blue Spawn" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00723052, 1.03397, 24.4657)
+
+[node name="BlueSpawn0" type="Node3D" parent="Blue Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.52586)
+
+[node name="BlueSpawn1" type="Node3D" parent="Blue Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.950386, 0, 1.52586)
+
+[node name="BlueSpawn2" type="Node3D" parent="Blue Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23939, 0, 1.52586)
+
+[node name="BlueSpawn3" type="Node3D" parent="Blue Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25399, 0, 0.0197697)
+
+[node name="BlueSpawn4" type="Node3D" parent="Blue Spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40817, 0, 0.0800877)
