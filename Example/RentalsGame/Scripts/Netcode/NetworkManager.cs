@@ -80,7 +80,7 @@ public partial class NetworkManager : Node {
         instance = this;
         //NetworkedMultiplayerENet.New();
         try {
-            Steamworks.SteamClient.Init(2478900, true); //2478900
+            Steamworks.SteamClient.Init(480, true); 
             GD.Print(SteamClient.Name);
         }
         catch (Exception e) {
