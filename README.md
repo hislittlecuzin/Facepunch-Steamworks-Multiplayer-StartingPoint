@@ -82,6 +82,30 @@ void MessageServerControllerInput(ClientToServerControllerInput input, bool pres
 //end of code block
 ```
 
+# I want to die
+When you take in data in your receiver, you gotta convert data like this:
+
+```
+StartMatchPacket foo = new StartMatchPacket();
+foo.packet = PacketType.StartMatch;
+foo.gameMode = 1;
+foo.teamAssignment = 69;
+IntPtr ptrData = Marshal.AllocHGlobal(Marshal.SizeOf(foo));
+Marshal.StructureToPtr(foo, ptrData, false);
+int size = Marshal.SizeOf<StartMatchPacket>(foo);
+
+StartMatchPacket bar;
+
+bar = (StartMatchPacket)Marshal.PtrToStructure(ptrData, typeof(StartMatchPacket));
+
+//Access sshtuff
+GD.Print("FUCKING " + bar.teamAssignment.ToString());
+```
+It took me like 6 hours to figure out the 
+```
+bar = (StartMatchPacket)Marshal.PtrToStructure(ptrData, typeof(StartMatchPacket));
+```
+line
 # example/rentalsgame
 This folder has some more shizz I was working on for like fps. 
 
