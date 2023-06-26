@@ -105,7 +105,10 @@ It took me like 6 hours to figure out the
 ```
 bar = (StartMatchPacket)Marshal.PtrToStructure(ptrData, typeof(StartMatchPacket));
 ```
-line
+line...
+I was legitimately going to do byte level reading with C# like I was doing assembly reading & writing to memory & registries...
+
+
 # example/rentalsgame
 This folder has some more shizz I was working on for like fps. 
 
