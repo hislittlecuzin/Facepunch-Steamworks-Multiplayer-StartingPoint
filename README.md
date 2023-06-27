@@ -18,23 +18,22 @@ Lobbies help you connect each other & you can send maybe some data. I'm not sure
 
 Then you can make a server. You REALLY do NOT have to use Steamwork's socket... but you can. 
 It relays through Steam's servers.
-Jerry never updated the Facepunch Steamworks API documentation/wiki so if Steam made it so P2P doesn't share IP then maybe that'll work too. 
+The Facepunch Steamworks API documentation/wiki was last updated "a long time ago" so if Steam made it so P2P doesn't share IP then maybe that'll work too. 
 
-After making this poing in the project where you can talk to clients, I tried converting stuff, and for some reason I can't get packets to be consistently read... idk why. 
-
-So make sure you organize your packets how I designed them. 
+So make sure you organize your packets how I designed them. IE "What packet is this?" as the first variable in the structure. 
 I tried to make as much stuff easy to do as possible for JUST MULTIPLAYER. 
 
 I didn't do a lot of stuff like ... disconnecting & stuff. 
-Many of the buttons are ticked to be "One Shot" which MIGHT make them only execute once... idk. 
-
-Have... Fun? 
+This isn't an instant game. 
+You are literally sending bare variables or whatever you send.
+ALL player prediction, syncing, etc is YOUR job. Steamworks sockets just lets you relay data through their servers. 
+Same thing with Berkley Sockets.
 
 
 
 
 # more infos
-Godot's gameobject hierarchy is a linked list or something so when I do like "add node" or something, that's how ya spawn shizz.
+Godot's gameobject hierarchy is a linked list or something so when I do like "add node" or something, that's how ya spawn stuff.
 Also The NetworkManager.cs is loaded in the autoload cuz that's how Godot does singletons. 
 In godot... go to the top left where "file, edit" etc would be dropdowns and:
 Project->Project Settings->Autoload
@@ -42,16 +41,15 @@ Project->Project Settings->Autoload
 
 Despite Jerry saying Facepunch Steamworks is a "C# reimagining" or whatever of Steamworks.NET, the sockets are VERY C level coded.
 This means you're going to be dealing with data like "pointer arrays" which is some wizard shit they did in the 70s or something. 
-I tried to make itt so you don't have to do that & stay in the .... I lost my train of though.
+I tried to make it so you don't have to do that.
 TL;DR:
-Name your packets in the enumeration (enum can be up to 256 different packets... no need for numbas assignment)
+Name your packets in the enumeration (enum can be up to 256 different packets... no need for number assignment)
 And then make different packets. Then you perhaps won't have memory leaks 'n stuff
 All packets HAVE to be structures... as far as I can tell. 
-You can do byte arrays but that sounded hard... so I didn't do them. 
+You can do byte arrays but... we use C# so we DON'T have to do hardware level memory management. 
 
-# If you have inconsistent data transmissions/etc
-you have to malloc then point... this is very "C" level code so if you don't understand it, just like take this method and figure out wtf you can do IG....
-I've been drunk for like 3 days so I'm not going to be too useful in editing stuff nicely. 
+# Sending Packets
+you have to malloc then point... this is very "C" level code so if you don't understand it, just like take this method and adapt it to your structures. 
 
 ```cs
 //ClientToServerControllerInput is an enum (byte)
@@ -82,9 +80,11 @@ void MessageServerControllerInput(ClientToServerControllerInput input, bool pres
 //end of code block
 ```
 
-# I want to die
+# Reading Packets
 When you take in data in your receiver, you gotta convert data like this:
-
+EXCEPT IT'S NOT WORKING AT THE MOMENT... Entirely... 
+So it's crashing when going from pointer/unmanaged memory to C#/managed memory. 
+When you have arrays in your packet structures... even if they're predefined in size. 
 ```
 StartMatchPacket foo = new StartMatchPacket();
 foo.packet = PacketType.StartMatch;
@@ -101,18 +101,12 @@ bar = (StartMatchPacket)Marshal.PtrToStructure(ptrData, typeof(StartMatchPacket)
 //Access sshtuff
 GD.Print("FUCKING " + bar.teamAssignment.ToString());
 ```
-It took me like 6 hours to figure out the 
-```
-bar = (StartMatchPacket)Marshal.PtrToStructure(ptrData, typeof(StartMatchPacket));
-```
-line...
-I was legitimately going to do byte level reading with C# like I was doing assembly reading & writing to memory & registries...
+We might to do byte level reading with C# by converting the IntPtr data parameter to a byte array. 
 
 
 # example/rentalsgame
-This folder has some more shizz I was working on for like fps. 
+This folder has some more stuff I was working on for like fps. 
 
-You can use that texture IG.... It's a picture of my desk with water damage or sumn. 
-If you don;t use my drunk boiler plate code there, you can just delete that folda. 
+You can use that texture IG.... It's a picture of my desk with water damage or something. 
 
 If you appreciate me or love me or something , plz giv money... am poor. idk how you would but ig I have a game on steam that's meh called Holy Journey of Salvation. And a youtube channel so if I release other games without dying, you can maybe buy one of those. 
