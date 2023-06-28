@@ -82,9 +82,7 @@ void MessageServerControllerInput(ClientToServerControllerInput input, bool pres
 
 # Reading Packets
 When you take in data in your receiver, you gotta convert data like this:
-EXCEPT IT'S NOT WORKING AT THE MOMENT... Entirely... 
-So it's crashing when going from pointer/unmanaged memory to C#/managed memory. 
-When you have arrays in your packet structures... even if they're predefined in size. 
+
 ```
 StartMatchPacket foo = new StartMatchPacket();
 foo.packet = PacketType.StartMatch;
@@ -101,7 +99,9 @@ bar = (StartMatchPacket)Marshal.PtrToStructure(ptrData, typeof(StartMatchPacket)
 //Access sshtuff
 GD.Print("FUCKING " + bar.teamAssignment.ToString());
 ```
-We might to do byte level reading with C# by converting the IntPtr data parameter to a byte array. 
+Your structures can only contain "regular" data.
+NO ARRAYS. Structs are fine. 
+Or ... basic data,,, whatever you wanna call it, homie G
 
 
 # example/rentalsgame
