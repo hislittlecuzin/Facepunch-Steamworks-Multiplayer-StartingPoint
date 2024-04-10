@@ -193,7 +193,7 @@ public partial class NetworkManager : Node
     }
 
     /// <summary>
-    /// When the lobby is created. second of 2
+    /// When the lobby is created. second of 2 - Used When you "lobby.SetGameServer(foobar)" and someone joins said thingy. When a server is added to the lobby.
     /// </summary>
     /// <param name="arg1"></param>
     /// <param name="arg2"></param>
