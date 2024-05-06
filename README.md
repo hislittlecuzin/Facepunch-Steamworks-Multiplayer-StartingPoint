@@ -3,13 +3,15 @@
 I was using Godot cuz.... (Godot Mono/.NET 4.0.3 Stable)
 This should be the bare minimum for a C# project.
 
-If you don't use Godot, make sure you download the release (or compile it yourself IG)
+~~If you don't use Godot,~~ make sure you ~~download the release (or~~ compile it yourself. ~~IG)~~
 https://github.com/Facepunch/Facepunch.Steamworks/releases
 
 Then in Visual Studio right click the PROJECT, not the solution. "Add->Project Reference..." then find the 
 Facepunch.Steamworks.2.3.2\net46\Facepunch.Steamworks.Win64.dll
 AND
 Facepunch.Steamworks.2.3.2\Unity\redistributable_bin\win64\steam_api64.dll
+
+UPDATE: It's a bit fucky-I think if you just download the project it'll be alright alright alright. Otherwise for some reason the steam_api64.dll sometimes just doesn't wanna vibe. /UPDATE
 
 There's lobbies and there's servers.
 Lobbies are just how ya like find each other on steam. 
